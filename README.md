@@ -7,7 +7,7 @@ The official api of the plugin better chat bubbles
 # Gradle
 
 ## Groovy
-```
+```groovy
 repositories {
 	maven { url 'https://jitpack.io' }
 }
@@ -17,8 +17,8 @@ dependencies {
 }
 ```
 
-## Kotlin
-```
+## Kotlin DSL
+```kotlin
 repositories {
     maven("https://jitpack.io")
 }
@@ -30,7 +30,7 @@ dependencies {
 
 # Maven
   
-```
+```xml
 <repositories>
 	<repository>
 		<id>jitpack.io</id>
@@ -42,6 +42,6 @@ dependencies {
 	<groupId>com.github.max1mde</groupId>
 	<artifactId>ChatBubbles-API</artifactId>
 	<version>1.3.0</version>
-  <scope>provided</scope>
+        <scope>provided</scope>
 </dependency>
 ```
