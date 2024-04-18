@@ -167,3 +167,22 @@ bubbleAPI.getBubbleGenerator().addBubble(target, "The text in the chat bubble");
 bubbleAPI.getBubbleGenerator().clearBubbles(target);
 int currentBubbleAmount = bubbleAPI.getBubbleGenerator().getBubbleAmount(target)
 ```
+
+--------------------------
+
+# Examples
+
+A simple damage indicator:
+
+```
+@EventHandler
+public void onEntityDamage(EntityDamageEvent event) {
+    if(!(event.getEntity() instanceof LivingEntity)) return;
+    ChatBubble chatBubble = new ChatBubble((LivingEntity) event.getEntity(), ChatBubble.RenderMode.NEARBY);
+
+    chatBubble.setText(ChatColor.RED + "Damage: " + event.getDamage())
+            .setScale(new Vector3D(1,1,1));
+
+    BubbleAPI.getBubbleAPI().get().bubbleGenerator().addBubble(chatBubble);
+}
+```
