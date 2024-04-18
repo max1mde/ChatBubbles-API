@@ -4,11 +4,43 @@
 <img src="https://jitpack.io/v/max1mde/ChatBubbles-API.svg">
 </a>
 <h1>The official api of the plugin better chat bubbles</h1>
+<p>Remove, create new or modify existing chat bubbles on any living entity as you like</p>
 </div>
 
-# Gradle
+- [API Setup](#API-Setup)
+  - [Dependency](#Dependency)
+    - [Gradle](#Gradle)
+    - [Maven](#Maven)
+- [Usage](#Usage)
+  - [Events](#Events)
+  - [ChatBubble](#ChatBubble)
+  - [Bubble generator](#Bubble-generator)
+- [Examples](#Examples)
 
-## Groovy
+----------------------------------------------------------
+
+# API Setup
+
+> [!IMPORTANT]  
+> Add depend `BetterChatBubbles`  
+> in your `plugin.yml` file!
+
+For example like that:
+```yml
+name: ChatBubblesExample
+version: '${version}'
+main: com.maximde.chatbubblesexample.ChatBubblesExample
+api-version: '1.19'
+
+depend:
+  - BetterChatBubbles
+```
+
+
+## Dependency
+
+### Gradle
+Groovy
 ```groovy
 repositories {
 	maven { url 'https://jitpack.io' }
@@ -18,8 +50,7 @@ dependencies {
 	compileOnly 'com.github.max1mde:ChatBubbles-API:1.3.0'
 }
 ```
-
-## Kotlin DSL
+Kotlin DSL
 ```kotlin
 repositories {
     maven("https://jitpack.io")
@@ -30,8 +61,7 @@ dependencies {
 }
 ```
 
-# Maven
-  
+### Maven
 ```xml
 <repositories>
 	<repository>
@@ -46,4 +76,94 @@ dependencies {
 	<version>1.3.0</version>
         <scope>provided</scope>
 </dependency>
+```
+
+# Usage
+How to use the API in your plugin
+
+## Events
+--- 
+The **BubbleCreateEvent**  
+Import:
+`com.maximde.betterchatbubbles.api.events.BubbleCreateEvent`
+
+
+Can be used like that:
+```java
+@EventHandler
+public void onBubbleCreate(BubbleCreateEvent event) {
+    ChatBubble chatBubble = event.getChatBubble();
+    // You can modify the chat bubble
+    chatBubble.setScale(new Vector3D(5, 5, 5));
+
+    // You can also cancel the event (So this chat bubble will not be created)
+    event.setCancelled(true);
+}
+```
+
+--- 
+
+The **BubbleRemoveEvent**  
+Import:
+`com.maximde.betterchatbubbles.api.events.BubbleRemoveEvent`
+
+
+Can be used like that:
+```java
+@EventHandler
+public void onBubbleRemove(BubbleRemoveEvent event) {
+    ChatBubble chatBubble = event.getChatBubble();
+    // You can get the chat bubble and the data in it.
+
+    /* You can cancel the event which stops the bubble from 'despawning'
+     * (This means the bubble will never be removed until the viewer rejoins the server)
+     */
+    event.setCancelled(true);
+}
+```
+---
+
+## ChatBubble
+
+Import `com.maximde.betterchatbubbles.api.ChatBubble`
+
+Creating a new instance of the ChatBubble's class
+```java
+
+LivingEntity target = // This can be any player or living entity like a zombie! Above this entity the chat bubbles will be shown!
+
+ChatBubble chatBubble = new ChatBubble(target, ChatBubble.RenderMode.NEARBY); // RenderMode nearby means all players near the target will see the chat bubbles
+
+// Now you can
+chatBubble.setText("Test")
+    .setScale(new Vector3D(2,2,2))
+    .setShadow(true)
+    .setBillboard(Display.Billboard.VERTICAL)
+    .setMaxLineWidth(500)
+    .setSeeThroughBlocks(false);
+// For more properties look into the ChatBubble class or in your IDE's auto complete
+```
+
+To spawn that chat bubble you need the bubble generator ↓
+
+## Bubble generator
+
+First you need to get the instance of the API:
+
+```java
+BubbleAPI bubbleAPI = BubbleAPI.getBubbleAPI().get();
+```
+
+The you can use the bubble generator like that:
+
+```java
+bubbleAPI.getBubbleGenerator().addBubble(chatBubble);
+```
+
+There are also some other methods in the bubble generator
+
+```java
+bubbleAPI.getBubbleGenerator().addBubble(target, "The text in the chat bubble"); // You dont need a ChatBubble object for this it will just take the values from the config for the bubble
+bubbleAPI.getBubbleGenerator().clearBubbles(target);
+int currentBubbleAmount = bubbleAPI.getBubbleGenerator().getBubbleAmount(target)
 ```
