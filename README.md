@@ -1,11 +1,12 @@
 <div align="center">
-<img width="900px" src="https://github.com/max1mde/ChatBubbles-API/assets/114857048/4c130692-fa76-4faf-8fe8-0283b76b7fb5"><br>
+<img width="900px" src="https://github.com/max1mde/ChatBubbles-API/assets/114857048/05d526ac-11aa-4cc2-870e-2fa385f90cee"><br>
 <a href="https://jitpack.io/#max1mde/ChatBubbles-API">
 <img src="https://jitpack.io/v/max1mde/ChatBubbles-API.svg">
 </a>
 <h1>The official api of the plugin better chat bubbles</h1>
 <p>Remove, create new or modify existing chat bubbles on any living entity as you like</p>
 </div>
+
 
 - [API Setup](#API-Setup)
   - [Dependency](#Dependency)
