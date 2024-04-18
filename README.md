@@ -174,7 +174,7 @@ int currentBubbleAmount = bubbleAPI.getBubbleGenerator().getBubbleAmount(target)
 
 A simple damage indicator:
 
-```
+```java
 @EventHandler
 public void onEntityDamage(EntityDamageEvent event) {
     if(!(event.getEntity() instanceof LivingEntity)) return;
