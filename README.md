@@ -1,5 +1,5 @@
 <div align="center">
-<img width="900px" src="https://github.com/max1mde/ChatBubbles-API/assets/114857048/d27018df-972d-4796-8a5d-6eab02f05f89"><br>
+<img width="900px" src="https://github.com/max1mde/ChatBubbles-API/assets/114857048/4c130692-fa76-4faf-8fe8-0283b76b7fb5"><br>
 <a href="https://jitpack.io/#max1mde/ChatBubbles-API">
 <img src="https://jitpack.io/v/max1mde/ChatBubbles-API.svg">
 </a>
