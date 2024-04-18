@@ -134,7 +134,7 @@ LivingEntity target = // This can be any player or living entity like a zombie! 
 
 ChatBubble chatBubble = new ChatBubble(target, ChatBubble.RenderMode.NEARBY); // RenderMode nearby means all players near the target will see the chat bubbles
 
-// Now you can
+// Now you can modify the chat bubble
 chatBubble.setText("Test")
     .setScale(new Vector3D(2,2,2))
     .setShadow(true)
@@ -163,8 +163,13 @@ bubbleAPI.getBubbleGenerator().addBubble(chatBubble);
 There are also some other methods in the bubble generator
 
 ```java
-bubbleAPI.getBubbleGenerator().addBubble(target, "The text in the chat bubble"); // You dont need a ChatBubble object for this it will just take the values from the config for the bubble
+// You dont need a ChatBubble object for this method it will just take the values from the config for the bubble
+bubbleAPI.getBubbleGenerator().addBubble(target, "The text in the chat bubble");
+
+// Remove all bubbles of an entity without any animation
 bubbleAPI.getBubbleGenerator().clearBubbles(target);
+
+// Get the currently shown/active chat bubbles of an entity
 int currentBubbleAmount = bubbleAPI.getBubbleGenerator().getBubbleAmount(target)
 ```
 
