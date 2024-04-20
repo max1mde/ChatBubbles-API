@@ -2,6 +2,7 @@ package com.maximde.betterchatbubbles.api;
 
 import com.github.retrooper.packetevents.util.Vector3f;
 import com.maximde.betterchatbubbles.api.utils.Vector3D;
+import com.maximde.betterchatbubbles.api.RenderMode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -36,7 +37,7 @@ public class ChatBubble implements BubbleActions {
     @Setter @Getter @Accessors(chain = true)
     protected byte textOpacity = (byte) -1;
     @Getter
-    protected final RenderMode renderMode;
+    public final RenderMode renderMode;
     /**
      * Only these player will see the bubble if RenderMode was set to VIEWER_LIST
      */
@@ -120,14 +121,6 @@ public class ChatBubble implements BubbleActions {
         this.scale = scale;
         return this;
     }
-
-    public enum RenderMode {
-        NONE,
-        VIEWER_LIST,
-        ALL,
-        NEARBY
-    }
-
 }
 
 
