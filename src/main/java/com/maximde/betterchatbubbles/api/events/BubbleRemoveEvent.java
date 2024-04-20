@@ -1,6 +1,7 @@
 package com.maximde.betterchatbubbles.api.events;
 
-import com.maximde.betterchatbubbles.api.*;
+
+import com.maximde.betterchatbubbles.api.ChatBubble;
 import lombok.Getter;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;

@@ -1,6 +1,5 @@
 package com.maximde.betterchatbubbles.api;
 
-import com.maximde.betterchatbubbles.api.ChatBubble;
 import org.bukkit.entity.LivingEntity;
 
 
