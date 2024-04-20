@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import java.util.Optional;
 import java.util.logging.Level;
 
-public record BubbleAPI(@Getter BubbleGenerator bubbleGenerator) {
+public record BubbleAPI(BubbleGenerator bubbleGenerator) {
 
     private static BubbleAPI bubbleAPI;
 

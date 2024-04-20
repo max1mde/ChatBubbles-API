@@ -67,6 +67,9 @@ public class ChatBubble implements BubbleActions {
         this.renderMode = RenderMode.VIEWER_LIST;
     }
 
+    public void addAllViewers(List<Player> viewerList) {
+        this.viewers.addAll(viewerList);
+    }
     public void addViewer(Player player) {
         this.viewers.add(player);
     }
