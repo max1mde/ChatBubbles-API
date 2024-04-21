@@ -1,6 +1,5 @@
 package com.maximde.betterchatbubbles.api;
 
-import lombok.Getter;
 import org.bukkit.Bukkit;
 
 import java.util.Optional;

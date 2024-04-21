@@ -2,10 +2,10 @@ package com.maximde.betterchatbubbles.api;
 
 import com.github.retrooper.packetevents.util.Vector3f;
 import com.maximde.betterchatbubbles.api.utils.Vector3D;
-import com.maximde.betterchatbubbles.api.RenderMode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.bukkit.Location;
 import org.bukkit.entity.*;
 
 import java.util.ArrayList;
@@ -30,6 +30,11 @@ public class ChatBubble implements BubbleActions {
     protected int maxLineWidth = 200;
     @Setter @Getter @Accessors(chain = true)
     protected int backgroundColor;
+    /**
+     * If true the target entity ID will be used for everything instead of the target!
+     */
+    @Setter @Getter @Accessors(chain = true)
+    protected boolean useTargetEntityID;
     @Setter @Getter @Accessors(chain = true)
     protected boolean seeThroughBlocks = false;
     @Setter @Getter @Accessors(chain = true)
@@ -54,8 +59,29 @@ public class ChatBubble implements BubbleActions {
     @Getter @Setter @Accessors(chain = true)
     protected LivingEntity target;
 
+    @Getter @Setter @Accessors(chain = true)
+    protected int targetEntityID;
+
+    @Getter @Setter @Accessors(chain = true)
+    protected Location targetEntityLocation;
+
     @Getter
     protected Vector3D finalScale;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected String textColor = "#FFFFFF";
+
+    /**
+     * The duration for the animation in ticks
+     */
+    @Setter @Getter @Accessors(chain = true)
+    protected int animationUpDuration = 5;
+
+    /**
+     * The duration for the animation in ticks
+     */
+    @Setter @Getter @Accessors(chain = true)
+    protected int fadeInOutDuration = 5;
 
     public ChatBubble(LivingEntity target, RenderMode renderMode) {
         this.target = target;
@@ -68,9 +94,25 @@ public class ChatBubble implements BubbleActions {
         this.renderMode = RenderMode.VIEWER_LIST;
     }
 
+    public ChatBubble(int entityID, Location entityLocation, RenderMode renderMode) {
+        this.targetEntityID = entityID;
+        this.renderMode = renderMode;
+        this.useTargetEntityID = true;
+        this.targetEntityLocation = entityLocation;
+    }
+
+    public ChatBubble(int entityID, Location entityLocation, List<Player> viewers) {
+        this.targetEntityID = entityID;
+        this.viewers = viewers;
+        this.renderMode = RenderMode.VIEWER_LIST;
+        this.useTargetEntityID = true;
+        this.targetEntityLocation = entityLocation;
+    }
+
     public void addAllViewers(List<Player> viewerList) {
         this.viewers.addAll(viewerList);
     }
+
     public void addViewer(Player player) {
         this.viewers.add(player);
     }
