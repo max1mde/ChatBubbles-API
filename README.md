@@ -142,7 +142,7 @@ chatBubble.setText("Test")
     .setBillboard(Display.Billboard.VERTICAL)
     .setMaxLineWidth(500)
     .setSeeThroughBlocks(false);
-// For more properties look into the ChatBubble class or in your IDE's auto complete
+// For more properties look into the ChatBubble class or in your IDE's auto completions for that object 
 ```
 
 To spawn that chat bubble you need the bubble generator ↓
