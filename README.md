@@ -133,7 +133,7 @@ Creating a new instance of the ChatBubble's class
 
 LivingEntity target = // This can be any player or living entity like a zombie! Above this entity the chat bubbles will be shown!
 
-ChatBubble chatBubble = new ChatBubble(target, ChatBubble.RenderMode.NEARBY); // RenderMode nearby means all players near the target will see the chat bubbles
+ChatBubble chatBubble = new ChatBubble(target, RenderMode.NEARBY); // RenderMode nearby means all players near the target will see the chat bubbles
 
 // Now you can modify the chat bubble
 chatBubble.setText("Test")
@@ -184,7 +184,7 @@ A simple damage indicator:
 @EventHandler
 public void onEntityDamage(EntityDamageEvent event) {
     if(!(event.getEntity() instanceof LivingEntity)) return;
-    ChatBubble chatBubble = new ChatBubble((LivingEntity) event.getEntity(), ChatBubble.RenderMode.NEARBY);
+    ChatBubble chatBubble = new ChatBubble((LivingEntity) event.getEntity(), RenderMode.NEARBY);
 
     chatBubble.setText(ChatColor.RED + "Damage: " + event.getDamage())
             .setScale(new Vector3D(1,1,1));
