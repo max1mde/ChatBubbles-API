@@ -1,10 +1,14 @@
 package com.maximde.betterchatbubbles.api;
 
 import com.github.retrooper.packetevents.util.Vector3f;
+import com.maximde.betterchatbubbles.api.utils.Mini;
 import com.maximde.betterchatbubbles.api.utils.Vector3D;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.*;
 
@@ -17,8 +21,7 @@ public class ChatBubble {
      */
     @Getter @Setter
     protected int entityID;
-    @Setter @Getter @Accessors(chain = true)
-    protected String text = "";
+    protected Component text = Component.text("");
     protected Vector3f scale = new Vector3f(0,0,0);
     protected Vector3f translation = new Vector3f(0,  0.7F, 0);
     @Setter @Getter @Accessors(chain = true)
@@ -172,6 +175,33 @@ public class ChatBubble {
      */
     public ChatBubble setCurrentScale(Vector3f scale) {
         this.scale = scale;
+        return this;
+    }
+
+    public Component getTextAsComponent() {
+        return this.text;
+    }
+
+    public String getText() {
+        return ((TextComponent)this.text).content();
+    }
+
+    public String getTextWithoutColor() {
+        return ChatColor.stripColor(getText());
+    }
+
+    public ChatBubble setText(String text) {
+        this.text = Component.text(text);
+        return this;
+    }
+
+    public ChatBubble setText(Component component) {
+        this.text = component;
+        return this;
+    }
+
+    public ChatBubble setMiniMessageText(String text) {
+        this.text = Mini.message(text);
         return this;
     }
 }

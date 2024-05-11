@@ -1,10 +1,11 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'com.maximde'
-version = '1.4.0'
+version = '1.4.1'
 
 tasks.withType(JavaCompile).configureEach {
     options.release = 17
@@ -26,6 +27,7 @@ dependencies {
 
     compileOnly ("org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT")
     compileOnly 'com.github.retrooper.packetevents:api:2.2.1'
+    implementation "net.kyori:adventure-text-minimessage:4.17.0"
 }
 
 publishing {
@@ -34,4 +36,9 @@ publishing {
             from components.java
         }
     }
+}
+
+shadowJar {
+    minimize()
+    archiveFileName.set("ChatBubblesAPI-${version}.jar")
 }
