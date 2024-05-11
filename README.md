@@ -166,7 +166,7 @@ You can get all active chat bubbles
 List<ChatBubble> activeChatBubbles = bubbleAPI.getBubbleGenerator().getAllActiveBubbles();
 ```
 or all active chat bubbles of a specific entity
-``java
+```java
 List<ChatBubble> activeChatBubbles = bubbleAPI.getBubbleGenerator().getActiveBubbles(targetEntity);
 ```
 
