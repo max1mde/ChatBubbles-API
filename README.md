@@ -142,6 +142,17 @@ chatBubble.setText("Test")
     .setBillboard(Display.Billboard.VERTICAL)
     .setMaxLineWidth(500)
     .setSeeThroughBlocks(false);
+
+
+// There are also the bubble actions:
+
+// Spawns the chat bubble entity
+chatBubble.getActions().spawn();
+// Applies your changed properties of the chatBubble object to the entity
+chatBubble.getActions().apply();
+// Removes the entity
+chatBubble.getActions().remove();
+
 // For more properties look into the ChatBubble class or in your IDE's auto completions for that object 
 ```
 
