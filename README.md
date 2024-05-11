@@ -48,7 +48,7 @@ repositories {
 }
     
 dependencies {
-	compileOnly 'com.github.max1mde:ChatBubbles-API:1.3.2'
+	compileOnly 'com.github.max1mde:ChatBubbles-API:1.4.0'
 }
 ```
 Kotlin DSL
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.github.max1mde:ChatBubbles-API:1.3.2")
+    compileOnly("com.github.max1mde:ChatBubbles-API:1.4.0")
 }
 ```
 
@@ -74,7 +74,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.max1mde</groupId>
 	<artifactId>ChatBubbles-API</artifactId>
-	<version>1.3.2</version>
+	<version>1.4.0</version>
         <scope>provided</scope>
 </dependency>
 ```
@@ -158,7 +158,7 @@ BubbleAPI bubbleAPI = BubbleAPI.getBubbleAPI().get();
 The you can use the bubble generator like that:
 
 ```java
-bubbleAPI.getBubbleGenerator().addBubble(chatBubble);
+bubbleAPI.getBubbleGenerator().spawnBubble(chatBubble);
 ```
 
 There are also some other methods in the bubble generator
@@ -189,6 +189,6 @@ public void onEntityDamage(EntityDamageEvent event) {
     chatBubble.setText(ChatColor.RED + "Damage: " + event.getDamage())
             .setScale(new Vector3D(1,1,1));
 
-    BubbleAPI.getBubbleAPI().get().bubbleGenerator().addBubble(chatBubble);
+    BubbleAPI.getBubbleAPI().get().bubbleGenerator().spawnBubble(chatBubble);
 }
 ```
