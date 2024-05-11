@@ -48,7 +48,7 @@ repositories {
 }
     
 dependencies {
-	compileOnly 'com.github.max1mde:ChatBubbles-API:1.3.0'
+	compileOnly 'com.github.max1mde:ChatBubbles-API:1.3.2'
 }
 ```
 Kotlin DSL
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.github.max1mde:ChatBubbles-API:1.3.0")
+    compileOnly("com.github.max1mde:ChatBubbles-API:1.3.2")
 }
 ```
 
@@ -74,7 +74,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.max1mde</groupId>
 	<artifactId>ChatBubbles-API</artifactId>
-	<version>1.3.0</version>
+	<version>1.3.2</version>
         <scope>provided</scope>
 </dependency>
 ```
@@ -133,7 +133,7 @@ Creating a new instance of the ChatBubble's class
 
 LivingEntity target = // This can be any player or living entity like a zombie! Above this entity the chat bubbles will be shown!
 
-ChatBubble chatBubble = new ChatBubble(target, ChatBubble.RenderMode.NEARBY); // RenderMode nearby means all players near the target will see the chat bubbles
+ChatBubble chatBubble = new ChatBubble(target, RenderMode.NEARBY); // RenderMode nearby means all players near the target will see the chat bubbles
 
 // Now you can modify the chat bubble
 chatBubble.setText("Test")
@@ -142,7 +142,7 @@ chatBubble.setText("Test")
     .setBillboard(Display.Billboard.VERTICAL)
     .setMaxLineWidth(500)
     .setSeeThroughBlocks(false);
-// For more properties look into the ChatBubble class or in your IDE's auto complete
+// For more properties look into the ChatBubble class or in your IDE's auto completions for that object 
 ```
 
 To spawn that chat bubble you need the bubble generator ↓
@@ -184,7 +184,7 @@ A simple damage indicator:
 @EventHandler
 public void onEntityDamage(EntityDamageEvent event) {
     if(!(event.getEntity() instanceof LivingEntity)) return;
-    ChatBubble chatBubble = new ChatBubble((LivingEntity) event.getEntity(), ChatBubble.RenderMode.NEARBY);
+    ChatBubble chatBubble = new ChatBubble((LivingEntity) event.getEntity(), RenderMode.NEARBY);
 
     chatBubble.setText(ChatColor.RED + "Damage: " + event.getDamage())
             .setScale(new Vector3D(1,1,1));
