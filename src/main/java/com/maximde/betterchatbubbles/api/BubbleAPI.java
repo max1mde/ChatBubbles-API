@@ -18,6 +18,7 @@ public record BubbleAPI(BubbleGenerator bubbleGenerator) {
             Bukkit.getLogger().log(Level.WARNING, "Tried to access the ChatBubbles API but it was not initialized yet! Add depends 'BetterChatBubbles' to your in plugin.yml");
             return Optional.empty();
         }
+
         return Optional.of(bubbleAPI);
     }
 }

@@ -11,8 +11,11 @@ import org.bukkit.entity.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatBubble implements BubbleActions {
-    @Getter
+public class ChatBubble {
+    /**
+     * Don't use the setter without a good reason!
+     */
+    @Getter @Setter
     protected int entityID;
     @Setter @Getter @Accessors(chain = true)
     protected String text = "";
@@ -50,8 +53,9 @@ public class ChatBubble implements BubbleActions {
     protected List<Player> viewers = new ArrayList<>();
     /**
      * Is true if the text display of the entity was killed
+     * Don't use the setter without a good reason.
      */
-    @Getter
+    @Getter @Setter
     protected boolean dead = false;
     /**
      * The entity above which the chat bubble should be displayed
@@ -82,6 +86,12 @@ public class ChatBubble implements BubbleActions {
      */
     @Setter @Getter @Accessors(chain = true)
     protected int fadeInOutDuration = 5;
+
+    /**
+     * Don't use the setter if you have no good reason.
+     */
+    @Getter @Setter
+    protected BubbleActions actions;
 
     public ChatBubble(LivingEntity target, RenderMode renderMode) {
         this.target = target;
@@ -125,21 +135,6 @@ public class ChatBubble implements BubbleActions {
         this.viewers.clear();
     }
 
-    @Override
-    public ChatBubble apply() {
-        return this;
-    }
-
-    @Override
-    public ChatBubble spawn() {
-        return this;
-    }
-
-    @Override
-    public ChatBubble remove() {
-        return this;
-    }
-
     public Vector3D getTranslation() {
         return new Vector3D(this.translation.x, this.translation.y, this.translation.z);
     }
@@ -149,17 +144,33 @@ public class ChatBubble implements BubbleActions {
         return this;
     }
 
+    /*
+     * This is the final scale before the out animation and after the in animation
+     * which will stay the same if not modified
+     */
     public Vector3D getScale() {
         return new Vector3D(this.scale.x, this.scale.y, this.scale.z);
     }
 
+    /**
+     * This is the final scale before the out animation and after the in animation
+     * which will stay the same if not modified
+     * @param scale
+     * @return
+     */
     public ChatBubble setScale(Vector3D scale) {
         this.finalScale = new Vector3D(scale.x, scale.y, scale.z);
         this.scale = new Vector3f(scale.x, scale.y, scale.z);
         return this;
     }
 
-    protected ChatBubble setCurrentScale(Vector3f scale) {
+    /**
+     * This is the current scale of the entity...
+     * In the IN or OUT animation this scale will be different
+     * @param scale
+     * @return this object
+     */
+    public ChatBubble setCurrentScale(Vector3f scale) {
         this.scale = scale;
         return this;
     }
