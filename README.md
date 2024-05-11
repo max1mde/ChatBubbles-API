@@ -160,18 +160,37 @@ The you can use the bubble generator like that:
 ```java
 bubbleAPI.getBubbleGenerator().spawnBubble(chatBubble);
 ```
+You can get all active chat bubbles
+
+```java
+List<ChatBubble> activeChatBubbles = bubbleAPI.getBubbleGenerator().getAllActiveBubbles();
+```
+or all active chat bubbles of a specific entity
+``java
+List<ChatBubble> activeChatBubbles = bubbleAPI.getBubbleGenerator().getActiveBubbles(targetEntity);
+```
 
 There are also some other methods in the bubble generator
 
 ```java
 // You dont need a ChatBubble object for this method it will just take the values from the config for the bubble
-bubbleAPI.getBubbleGenerator().addBubble(target, "The text in the chat bubble");
+bubbleAPI.getBubbleGenerator().spawnBubble(target, "The text in the chat bubble");
 
 // Remove all bubbles of an entity without any animation
 bubbleAPI.getBubbleGenerator().clearBubbles(target);
 
 // Get the currently shown/active chat bubbles of an entity
 int currentBubbleAmount = bubbleAPI.getBubbleGenerator().getBubbleAmount(target)
+
+// Get by entity ID
+List<ChatBubble> activeBubblesFromEntity = bubbleAPI.getBubbleGenerator().getActiveBubbles(int entityID);
+
+/**
+* If you want to use the bubble actions before you spawned it using a BubbleGenerator#spawnBubble(..) method,
+* you have to initialize the actions first.
+* Or if you've overwritten the implementation of the actions you can reset them using this method
+*/
+bubbleAPI.getBubbleGenerator().initBubbleActions(ChatBubble chatBubble);
 ```
 
 --------------------------
