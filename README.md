@@ -3,7 +3,7 @@
 <a href="https://jitpack.io/#max1mde/ChatBubbles-API">
 <img src="https://jitpack.io/v/max1mde/ChatBubbles-API.svg">
 </a>
-<h1>The official api of the plugin better chat bubbles</h1>
+<h1>The official api of the plugin Better Chat Bubbles</h1>
 <p>Remove, create new or modify existing chat bubbles on any living entity as you like</p>
 </div>
 
