@@ -3,7 +3,7 @@
 <a href="https://jitpack.io/#max1mde/ChatBubbles-API">
 <img src="https://jitpack.io/v/max1mde/ChatBubbles-API.svg">
 </a>
-<h1>The official api of the plugin better chat bubbles</h1>
+<h1>The official api of the plugin Better Chat Bubbles</h1>
 <p>Remove, create new or modify existing chat bubbles on any living entity as you like</p>
 </div>
 
@@ -48,7 +48,7 @@ repositories {
 }
     
 dependencies {
-	compileOnly 'com.github.max1mde:ChatBubbles-API:1.4.0'
+	compileOnly 'com.github.max1mde:ChatBubbles-API:1.4.1'
 }
 ```
 Kotlin DSL
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.github.max1mde:ChatBubbles-API:1.4.0")
+    compileOnly("com.github.max1mde:ChatBubbles-API:1.4.1")
 }
 ```
 
@@ -74,7 +74,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.max1mde</groupId>
 	<artifactId>ChatBubbles-API</artifactId>
-	<version>1.4.0</version>
+	<version>1.4.1</version>
         <scope>provided</scope>
 </dependency>
 ```
