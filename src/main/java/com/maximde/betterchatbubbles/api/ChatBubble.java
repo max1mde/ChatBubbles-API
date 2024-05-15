@@ -1,5 +1,7 @@
 package com.maximde.betterchatbubbles.api;
 
+import com.github.retrooper.packetevents.protocol.particle.type.ParticleType;
+import com.github.retrooper.packetevents.protocol.particle.type.ParticleTypes;
 import com.github.retrooper.packetevents.util.Vector3f;
 import com.maximde.betterchatbubbles.api.utils.Mini;
 import com.maximde.betterchatbubbles.api.utils.Vector3D;
@@ -8,12 +10,16 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.entity.*;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 public class ChatBubble {
     /**
@@ -82,14 +88,29 @@ public class ChatBubble {
      * The duration for the animation in ticks
      */
     @Setter @Getter @Accessors(chain = true)
-    protected int animationUpDuration = 5;
+    protected int animationDurationUp = 5;
 
     /**
      * The duration for the animation in ticks
      */
     @Setter @Getter @Accessors(chain = true)
-    protected int fadeInOutDuration = 5;
+    protected int animationDurationIn = 5;
 
+    @Setter @Getter @Accessors(chain = true)
+    protected int animationDurationOut = 5;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected int duration = 5;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected AnimationType animationTypeIn = AnimationType.SCALE;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected AnimationType animationTypeOut = AnimationType.SCALE;
+
+
+    @Getter
+    protected ParticleType animationParticleType = ParticleTypes.END_ROD;
     /**
      * Don't use the setter if you have no good reason.
      */
@@ -204,6 +225,35 @@ public class ChatBubble {
         this.text = Mini.message(text);
         return this;
     }
+
+    /**
+     * This is the correct way to get the location without any possible errors!
+     */
+    public Location getLocation() {
+        return isUseTargetEntityID() ? getTargetEntityLocation() : getTarget().getLocation();
+    }
+
+    public ChatBubble setAnimationParticleType(String particleType) {
+        try {
+            Field field = ParticleTypes.class.getField(particleType.toUpperCase());
+            Object value = field.get(null);
+            if (value instanceof ParticleType) {
+                this.animationParticleType = (ParticleType) value;
+            } else {
+                Bukkit.getLogger().log(Level.SEVERE, "Could not apply particle type " + particleType + "! Using default type now.");
+                this.animationParticleType = ParticleTypes.END_ROD;
+            }
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            Bukkit.getLogger().log(Level.SEVERE, "Could not find particle type " + particleType + "! Using default type now.");
+            this.animationParticleType = ParticleTypes.END_ROD;
+        }
+        return this;
+    }
+
+    public String getAnimationParticleTypeString() {
+        return this.animationParticleType.getName().getKey().toUpperCase();
+    }
+
 }
 
 
