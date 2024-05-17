@@ -13,7 +13,7 @@ import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.*;
 
 import java.lang.reflect.Field;
@@ -108,6 +108,17 @@ public class ChatBubble {
     @Setter @Getter @Accessors(chain = true)
     protected AnimationType animationTypeOut = AnimationType.SCALE;
 
+    @Setter @Getter @Accessors(chain = true)
+    protected Sound animationInSound = Sound.UI_TOAST_IN;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected Sound animationOutSound = Sound.UI_TOAST_OUT;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected boolean soundIn = true;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected boolean soundOut = true;
 
     @Getter
     protected ParticleType animationParticleType = ParticleTypes.END_ROD;
