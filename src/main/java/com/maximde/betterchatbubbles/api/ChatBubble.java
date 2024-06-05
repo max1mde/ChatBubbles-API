@@ -122,6 +122,24 @@ public class ChatBubble {
     @Setter @Getter @Accessors(chain = true)
     protected boolean soundOut = true;
 
+    @Setter @Getter @Accessors(chain = true)
+    protected float soundOutPitch = 1F;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected float soundOutVolume = 1F;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected float soundInPitch = 1F;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected float soundInVolume = 1F;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected boolean soundInDisableForSelf = false;
+
+    @Setter @Getter @Accessors(chain = true)
+    protected boolean soundOutDisableForSelf = false;
+
     @Getter
     protected ParticleType animationParticleType = ParticleTypes.END_ROD;
     /**
