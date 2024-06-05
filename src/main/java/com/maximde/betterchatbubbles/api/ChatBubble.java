@@ -19,6 +19,8 @@ import org.bukkit.entity.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Level;
 
 public class ChatBubble {
@@ -223,7 +225,7 @@ public class ChatBubble {
     }
 
     public ChatBubble setText(String text) {
-        this.text = Component.text(text);
+        this.text = Component.text(replaceFontImages(text));
         return this;
     }
 
@@ -233,8 +235,15 @@ public class ChatBubble {
     }
 
     public ChatBubble setMiniMessageText(String text) {
-        this.text = Mini.message(text);
+        this.text = Mini.message(replaceFontImages(text));
         return this;
+    }
+
+    private String replaceFontImages(String s) {
+        AtomicReference<String> news = new AtomicReference<>(s);
+        Optional<BubbleAPI> bubble = BubbleAPI.getBubbleAPI();
+        bubble.ifPresent(bubbleAPI -> news.set(bubbleAPI.getReplaceText().replace(news.get())));
+        return news.get();
     }
 
     /**
