@@ -48,7 +48,7 @@ repositories {
 }
     
 dependencies {
-	compileOnly 'com.github.max1mde:ChatBubbles-API:1.4.1'
+	compileOnly 'com.github.max1mde:ChatBubbles-API:1.5.3'
 }
 ```
 Kotlin DSL
@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.github.max1mde:ChatBubbles-API:1.4.1")
+    compileOnly("com.github.max1mde:ChatBubbles-API:1.5.3")
 }
 ```
 
@@ -74,7 +74,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.max1mde</groupId>
 	<artifactId>ChatBubbles-API</artifactId>
-	<version>1.4.1</version>
+	<version>1.5.3</version>
         <scope>provided</scope>
 </dependency>
 ```
